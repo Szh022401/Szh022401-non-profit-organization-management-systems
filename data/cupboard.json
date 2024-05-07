@@ -1,0 +1,94 @@
+{
+  "cupboard": [
+    {
+      "id": 1,
+      "name": "Test1",
+      "price": 1,
+      "quantity": 10,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/1.webp"
+    },
+    {
+      "id": 2,
+      "name": "Test2",
+      "price": 2,
+      "quantity": 10,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/2.webp"
+    },
+    {
+      "id": 3,
+      "name": "Test3",
+      "price": 3,
+      "quantity": 3,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/3 .webp"
+    },
+    {
+      "id": 4,
+      "name": "Test4",
+      "price": 4,
+      "quantity": 10,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/4.webp"
+    },
+    {
+      "id": 5,
+      "name": "Test5",
+      "price": 5,
+      "quantity": 10,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/5.webp"
+    },
+    {
+      "id": 6,
+      "name": "Test6",
+      "price": 6,
+      "quantity": 10,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/6.webp"
+    },
+    {
+      "id": 7,
+      "name": "Test7",
+      "price": 6,
+      "quantity": 10,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/7.webp"
+    },
+    {
+      "id": 8,
+      "name": "Test6",
+      "price": 6,
+      "quantity": 10,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/8 .webp"
+    },
+    {
+      "id": 9,
+      "name": "Test6",
+      "price": 6,
+      "quantity": 10,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/9.webp"
+    },
+    {
+      "id": 10,
+      "name": "Test6",
+      "price": 6,
+      "quantity": 10,
+      "type": "goods",
+      "status": "set",
+      "image": "assets/10.png"
+    }
+  ]
+}
