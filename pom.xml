@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com</groupId>
-	<artifactId>ufund</artifactId>
+	<artifactId>non-profit-organization-management-systems</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ufund</name>
 	<description>ufund</description>
