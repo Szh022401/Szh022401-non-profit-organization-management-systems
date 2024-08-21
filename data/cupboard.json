@@ -65,7 +65,7 @@
     },
     {
       "id": 8,
-      "name": "Test6",
+      "name": "Test8",
       "price": 6,
       "quantity": 10,
       "type": "goods",
@@ -74,7 +74,7 @@
     },
     {
       "id": 9,
-      "name": "Test6",
+      "name": "Test9",
       "price": 6,
       "quantity": 10,
       "type": "goods",
@@ -83,7 +83,7 @@
     },
     {
       "id": 10,
-      "name": "Test6",
+      "name": "Test10",
       "price": 6,
       "quantity": 10,
       "type": "goods",

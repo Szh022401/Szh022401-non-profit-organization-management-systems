@@ -52,7 +52,7 @@ public interface FundingBasketDAO {
      *
      * @throws IOException if an issue with underlying storage.
      */
-    Need[] addNeedToFundingBasket(Need need) throws IOException;
+    Need[] addNeedToFundingBasket(int helperId,Need need) throws IOException;
 
     /**
      * Removes a need from the target helper's funding basket
@@ -60,7 +60,7 @@ public interface FundingBasketDAO {
      * @return The need removed from the funding basket
      * @throws IOException
      */
-    Need[] removeNeedFromFundingBasket(int id) throws IOException;
+    Need[] removeNeedFromFundingBasket(int helperId, int id) throws IOException;
 
     /**
      * Deletes the contents of the fundingBasket of the currently logged in user.

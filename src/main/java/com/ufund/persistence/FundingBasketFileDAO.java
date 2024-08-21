@@ -88,12 +88,10 @@ public class FundingBasketFileDAO implements FundingBasketDAO {
         return true;
     }
 
-    boolean loadTargetFundingBasket() throws IOException {
-        if (targetFundingBasket == null) {
-            targetFundingBasket = new TreeMap<>();
-        }
+    private boolean loadTargetFundingBasket(int helperId) throws IOException {
+        targetFundingBasket = new TreeMap<>(); // Initialize the target funding basket map
 
-        Need[] needs = getFundingBasketByHelperId(targetHelper);
+        Need[] needs = getFundingBasketByHelperId(helperId);
         if (needs == null) {
             needs = new Need[0]; // Ensures that the array is never null
         }
@@ -114,7 +112,9 @@ public class FundingBasketFileDAO implements FundingBasketDAO {
         if(helper == null){
             return null;
         }
+        ;
         if(getFundingBasketByHelperId(helper.getHelperId()) != null) { // check to see if the helper is already in the file system
+
             newFundingBasket = getFundingBasketByHelperId(helper.getHelperId()); // if so, return their existing funding basket
         }else {
         helper.setFundingBasket(new Need[0]);
@@ -123,7 +123,8 @@ public class FundingBasketFileDAO implements FundingBasketDAO {
         }
         save(); // save the change
         targetHelper = helper.getHelperId(); // sets the target helper for the local client
-        loadTargetFundingBasket(); // load the target funding basket map
+
+        loadTargetFundingBasket(helper.getHelperId()); // load the target funding basket map
         return newFundingBasket;
     }
 
@@ -155,37 +156,57 @@ public class FundingBasketFileDAO implements FundingBasketDAO {
      * {@inheritDoc}
      */
     @Override
-    public Need[] addNeedToFundingBasket(Need need) throws IOException {
-        if(need == null){
-            return   new Need[0];
+    public Need[] addNeedToFundingBasket(int helperId, Need need) throws IOException {
+        if (need == null) {
+            LOG.warning("Attempted to add a null Need to the funding basket.");
+            return new Need[0];
         }
-        loadTargetFundingBasket(); // load the target funding basket map
-        targetFundingBasket.put(need.getId(), need); // put the incoming need into the target funding basket map
 
-        Helper helper = fundingBaskets.get(targetHelper);    // gets the targetHelper's fundingbasket
-        if (helper == null){
+        LOG.info("Loading funding basket for helper: " + helperId);
+        Helper helper = fundingBaskets.get(helperId);
+
+        if (helper == null) {
+            LOG.warning("Helper not found for helperId: " + helperId);
             return null;
         }
-        helper.setFundingBasket(targetFundingBasket.values().toArray(new Need[targetFundingBasket.size()])); // sets it to the updated targetFundingBasket
 
-        save(); // save and return the updated fundingBasket
+        loadTargetFundingBasket(helperId); // Load the target funding basket for the specified helper
+
+        LOG.info("Adding need with ID: " + need.getId() + " to funding basket for helper: " + helperId);
+        targetFundingBasket.put(need.getId(), need);
+
+        LOG.info("Updating funding basket for helper: " + helperId);
+        helper.setFundingBasket(targetFundingBasket.values().toArray(new Need[targetFundingBasket.size()]));
+
+        LOG.info("Saving updated funding basket for helper: " + helperId);
+        save(); // Persist the changes
+
+        LOG.info("Successfully updated funding basket for helper: " + helperId);
         return helper.getFundingBasket();
     }
+
+
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Need[] removeNeedFromFundingBasket(int id) throws IOException {
-        loadTargetFundingBasket(); // load the target funding basket
-        targetFundingBasket.remove(id); // remove the need that matches the id from the target map
+    public Need[] removeNeedFromFundingBasket(int helperId, int id) throws IOException {
+        // Load the target funding basket for the specified helperId
+        loadTargetFundingBasket(helperId);
 
-        Helper helper = fundingBaskets.get(targetHelper);    // gets the targetHelper's fundingbasket
-        helper.setFundingBasket(targetFundingBasket.values().toArray(new Need[targetFundingBasket.size()])); // sets it to the updated arraylist as an array
+        // Remove the Need that matches the id from the target map
+        targetFundingBasket.remove(id);
 
-        save(); // saves and returns the new fundingBasket
+        // Get the Helper's updated funding basket
+        Helper helper = fundingBaskets.get(helperId);
+        helper.setFundingBasket(targetFundingBasket.values().toArray(new Need[targetFundingBasket.size()]));
+
+        // Save the changes and return the updated funding basket
+        save();
         return helper.getFundingBasket();
     }
+
 
 
     /**

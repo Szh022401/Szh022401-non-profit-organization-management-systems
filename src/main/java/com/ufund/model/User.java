@@ -16,6 +16,7 @@ public  class User {
     static final String STRING_FORMAT = "User [username=%s, manager=%b]";
 
     @JsonProperty("username") private String username;
+    @JsonProperty("id") private int id;
     @JsonProperty("manager") private boolean manager = false;  // manager's default is false
     
     
@@ -29,17 +30,26 @@ public  class User {
      * value, i.e. 0 for int
      */
     public User(@JsonProperty("username") String username) {
+
         this.username = username; // username is immutable after it is set by the constructor
         if ("admin".equalsIgnoreCase(username)) { // if the user is logging in as admin
             this.manager = true;                 // they are a manager
-        } 
+        }
+
     }
 
     /**
      * Retrieves the username of the User
      * @return The username of the User
      */
-    public String getUsername() {return username;} 
+    public String getUsername() {return username;}
+
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id = id;
+    }
 
     /**
      * Retrieves the manager status of the User

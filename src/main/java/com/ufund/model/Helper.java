@@ -18,36 +18,49 @@ public class Helper extends User {
 
     private static final Logger LOG = Logger.getLogger(User.class.getName());
     @JsonProperty("helperId")
-    private int helperId;  // Add a helperId field
-    @JsonProperty("fundingBasket") private Need[] fundingBasket;
-    private static int nextHelperId = 0; // next helperId
+    private int helperId;
+
+    @JsonProperty("fundingBasket")
+    private Need[] fundingBasket;
 
 
     /**
      * Creates a new Helper
-     * 
+     *
      * @param username The username of the helper
      */
     @JsonCreator
-    public Helper(@JsonProperty("username") String username, @JsonProperty("fundingBasket") Need[] fundingBasket) {
-        super(username); // calls the parent constructor
-        this.helperId = ++nextHelperId; // assign new user the next available id
+    public Helper(@JsonProperty("username") String username,
+                  @JsonProperty("fundingBasket") Need[] fundingBasket,
+                  @JsonProperty("helperId") int helperId) {
+        super(username, helperId);  // This sets the id in User class
+        this.helperId = helperId;    // This sets the helperId in Helper class
         this.fundingBasket = fundingBasket;
     }
 
-    public Helper( @JsonProperty("username") String username ) {
-        super(username); // cals the parent constructor
-        this.helperId = ++nextHelperId; // assign new user the next available id
-    }
 
-    public static void resetNextHelperId() {
-        nextHelperId = 0;
-    }
 
     /**
-     * Gets the if of the helper
-     * @return
+     * Alternative constructor for Helper without funding basket
+     *
+     * @param username The username of the helper
+     * @param helperId The ID of the helper
      */
+    public Helper(@JsonProperty("username") String username,
+                  @JsonProperty("helperId") int helperId) {
+        super(username);
+        this.helperId = helperId;
+
+    }
+
+    @Override
+    public void setId(int id) {
+
+
+        this.helperId = id; // Sync the helperId with the User ID
+    }
+
+
     public int getHelperId() {
         return helperId;
     }
@@ -82,6 +95,11 @@ public class Helper extends User {
      */
     public void setFundingBasket(Need[] fundingBasket) {
         this.fundingBasket = fundingBasket;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("User [username=%s, id=%d, manager=%b]", getUsername(), getId(), isManager());
     }
 
 }

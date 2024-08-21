@@ -14,8 +14,8 @@ public class Manager extends User {
     private static final Logger LOG = Logger.getLogger(User.class.getName());
 
 
-    public Manager(@JsonProperty("username") String username) {
-        super(username);
+    public Manager(@JsonProperty("username") String username,@JsonProperty("id") int id) {
+        super(username,id);
     }
 
     public boolean isValidName() {
