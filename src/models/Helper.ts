@@ -1,5 +1,6 @@
 import { Need } from './Need';
 export interface Helper {
-  helperId: number;
+  username:string;
   fundingBasket: Need[];
+
 }

@@ -35,3 +35,45 @@ button {
     grid-template-columns: 1fr;
   }
 }
+.cart-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1000;
+  transition: background-color 0.2s;
+}
+
+.cart-toggle:hover {
+  background-color: #0056b3;
+}
+
+.cart-container {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  padding: 20px;
+  display: none;
+}
+
+.cart-container.hidden {
+  display: none;
+}
+
+.cart-container:not(.hidden) {
+  display: block;
+}

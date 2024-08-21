@@ -2,25 +2,34 @@
   background: var(--accent-color);
   border-radius: 30px;
   padding-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
 }
+
+.cupboard-item:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
 .cupboard-heading {
   color: var(--primary-color);
   padding: 10px 20px 0 20px;
+  font-size: 20pt; /* Increase the font size for better readability */
 }
+
 .cupboard-photo {
   height: 250px;
   width: 100%;
   object-fit: cover;
   border-radius: 30px 30px 0 0;
 }
-.cupboard-status {
-  padding: 10px 20px 20px 20px;
-}
-.cupboard-price {
-  padding: 10px 20px 20px 20px;
-}
+
+.cupboard-status,
+.cupboard-price,
 .cupboard-quantity {
   padding: 10px 20px 20px 20px;
+  font-size: 14pt; /* Consistent font size for text elements */
+  color: #333; /* Darker color for readability */
 }
 
 section.cupboard-item a {
@@ -28,7 +37,29 @@ section.cupboard-item a {
   text-decoration: none;
   color: var(--primary-color);
 }
+
 section.cupboard-item a::after {
   content: "\203A";
   margin-left: 5px;
+}
+
+.cupboard-item button {
+  display: block;
+  width: 80%; /* Adjust width for better fit */
+  margin: 20px auto 0 auto; /* Center the button and add margin */
+  padding: 12px 20px;
+  background-color: var(--primary-color); /* Use primary color for the button */
+  color: white;
+  border: none;
+  border-radius: 10px; /* Rounded corners for a modern look */
+  font-size: 16pt;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+  text-transform: uppercase; /* Make the text uppercase for emphasis */
+}
+
+.cupboard-item button:hover {
+  background-color: var(--primary-color-dark); /* Darker shade on hover */
+  transform: translateY(-3px); /* Slight lift effect on hover */
 }

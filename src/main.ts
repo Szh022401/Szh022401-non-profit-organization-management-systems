@@ -1,9 +1,13 @@
-import {bootstrapApplication, provideProtractorTestingSupport} from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
-import routeConfig from '../src/service/routes';
+import { routes } from './app/app.routes';  // 使用命名导出
+import {provideHttpClient, withFetch} from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
-  providers: [provideProtractorTestingSupport(), provideRouter(routeConfig)],
-}).catch((err) => console.error(err));
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(),
+    provideHttpClient(withFetch())
+  ]
+}).catch(err => console.error(err));
