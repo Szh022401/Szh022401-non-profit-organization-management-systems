@@ -1,27 +1,72 @@
-# MyApp
+# U-Fund:  Ocean Cleanup 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+# Modify this document to expand any and all sections that are applicable for a better understanding from your users/testers/collaborators (remove this comment and other instructions areas for your FINAL release)
 
-## Development server
+An online U-Fund system built in Java 17=> and ___ _replace with other platform requirements_ ___
+  
+- Zehua Sun
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+- Java 11=>17 (Make sure to have correct JAVA_HOME setup in your environment)
+- Maven
+-  _add any other tech stack requirements_
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## How to run it
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the repository and go to the root directory.
+2. Execute `mvn compile exec:java`
+3. Open in your browser `http://localhost:8080/`
+4.  _add any other steps required or examples of how to use/run_
 
-## Running unit tests
+## Known bugs and disclaimers
+(It may be the case that your implementation is not perfect.)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Document any known bug or nuisance.
+If any shortcomings, make clear what these are and where they are located.
 
-## Running end-to-end tests
+## How to test it
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The Maven build script provides hooks for run unit tests and generate code coverage
+reports in HTML.
 
-## Further help
+To run tests on all tiers together do this:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Execute `mvn clean test jacoco:report`
+2. Open in your browser the file at `PROJECT_API_HOME/target/site/jacoco/index.html`
+
+To run tests on a single tier do this:
+
+1. Execute `mvn clean test-compile surefire:test@tier jacoco:report@tier` where `tier` is one of `controller`, `model`, `persistence`
+2. Open in your browser the file at `PROJECT_API_HOME/target/site/jacoco/{controller, model, persistence}/index.html`
+
+To run tests on all the tiers in isolation do this:
+
+1. Execute `mvn exec:exec@tests-and-coverage`
+2. To view the Controller tier tests open in your browser the file at `PROJECT_API_HOME/target/site/jacoco/model/index.html`
+3. To view the Model tier tests open in your browser the file at `PROJECT_API_HOME/target/site/jacoco/model/index.html`
+4. To view the Persistence tier tests open in your browser the file at `PROJECT_API_HOME/target/site/jacoco/model/index.html`
+
+*(Consider using `mvn clean verify` to attest you have reached the target threshold for coverage)
+  
+  
+## How to generate the Design documentation PDF
+
+1. Access the `PROJECT_DOCS_HOME/` directory
+2. Execute `mvn exec:exec@docs`
+3. The generated PDF will be in `PROJECT_DOCS_HOME/` directory
+
+
+## How to setup/run/test program 
+1. Tester, first obtain the Acceptance Test plan
+2. IP address of target machine running the app
+3. Execute ________
+4. ...
+5. ...
+
+## License
+
+MIT License
+
+See LICENSE for details.

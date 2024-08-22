@@ -1,0 +1,25 @@
+[ {
+  "username" : "test1",
+  "id" : 1,
+  "manager" : false
+}, {
+  "username" : "test2",
+  "id" : 1,
+  "manager" : false
+}, {
+  "username" : "test3",
+  "id" : 2,
+  "manager" : false
+}, {
+  "username" : "test4",
+  "id" : 3,
+  "manager" : false
+}, {
+  "username" : "test4",
+  "id" : 4,
+  "manager" : false
+}, {
+  "username" : "",
+  "id" : 5,
+  "manager" : false
+} ]
