@@ -44,10 +44,9 @@ public class FundingBasketController {
 
         ObjectMapper mapper = new ObjectMapper();
         try {
-            // 读取 users.json 文件
+
             List<Map<String, Object>> users = mapper.readValue(new File("data/users.json"), new TypeReference<List<Map<String, Object>>>(){});
 
-            // 查找匹配的用户并设置 helperId
             for (Map<String, Object> user : users) {
                 if (user.get("username").equals(helper.getUsername())) {
                     int existingId = (Integer) user.get("id");
